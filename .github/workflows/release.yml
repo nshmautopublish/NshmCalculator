@@ -2,11 +2,16 @@ name: Build and Deploy to Another Repository
 
 on:
   push:
-    branches: [ main, master, autopublish ]
-    # 可以指定特定目录或文件变更时才触发
-    # paths:
-    #   - 'src/**'
-    #   - '.github/workflows/deploy.yml'
+  pull_request:
+    branches: [ pve_3.4 ]
+    paths:
+      - '**.cs'
+      - '**.csproj'
+permissions:
+  contents: read
+  actions: read
+  checks: write
+  pull-requests: write
 
 jobs:
   build-and-deploy:
