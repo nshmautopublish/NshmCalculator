@@ -86,7 +86,7 @@ jobs:
     # 8. 准备目标仓库
     - name: Prepare Target Repository
       env:
-        TARGET_REPO_URL: "https://x-access-token:${{ secrets.DEPLOY_TOKEN }}@github.com/<目标用户名>/<目标仓库名>.git"
+        TARGET_REPO_URL: "https://x-access-token:${{ secrets.DEPLOY_TOKEN }}@github.com/dellbeat/nshmCalculator_Release.git"
       run: |
         echo "准备目标仓库..."
         
