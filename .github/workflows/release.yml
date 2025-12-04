@@ -2,7 +2,7 @@ name: Build and Deploy Blazor WASM
 
 on:
   push:
-    branches: [ main, master, autopublish ]
+    branches: [ main, master, dev ]
   pull_request:
     branches: [ pve_3.4 ]
     paths:
