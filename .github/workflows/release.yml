@@ -2,14 +2,29 @@ name: Build and Deploy Blazor WASM
 
 on:
   push:
-    branches: [ main, master ]
-  workflow_dispatch:
+    branches: [ main, master, autopublish ]
+  pull_request:
+    branches: [ pve_3.4 ]
+    paths:
+      - '**.cs'
+      - '**.csproj'
+permissions:
+  contents: read
+  actions: read
+  checks: write
+  pull-requests: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Configure Git with Committer Info
+      run: |
+        # 使用触发工作流的用户信息
+        git config --global user.name "${{ github.actor }}"
+        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+    
     # 1. 检出当前仓库代码
     - name: Checkout Source Repository
       uses: actions/checkout@v4
