@@ -19,11 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Configure Git with Committer Info
+    - name: Configure Git from Secrets
       run: |
-        # 使用触发工作流的用户信息
-        git config --global user.name "${{ github.actor }}"
-        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+        git config --global user.name "${{ secrets.COMMITTER_NAME }}"
+        git config --global user.email "${{ secrets.COMMITTER_EMAIL }}"
     
     # 1. 检出当前仓库代码
     - name: Checkout Source Repository
